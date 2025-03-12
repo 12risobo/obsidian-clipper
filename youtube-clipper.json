@@ -1,22 +1,32 @@
 {
 	"schemaVersion": "0.1.0",
-	"name": "YouTube",
+	"name": "YouTub",
 	"behavior": "create",
-	"noteContentFormat": "## todo\n\n- [ ] TODO [[<% tp.file.title %>]] #nu\n\n\n## Notes\n",
+	"noteContentFormat": "![{{schema:name}}]({{url}})\n\n\n## Notes\n\n## todo",
 	"properties": [
+		{
+			"name": "title",
+			"value": "{{schema:name}}",
+			"type": "text"
+		},
+		{
+			"name": "channel",
+			"value": "{{schema:author|wikilink}}",
+			"type": "text"
+		},
+		{
+			"name": "published",
+			"value": "{{schema:uploadDate|date:YYYY-MM-DD}}",
+			"type": "date"
+		},
 		{
 			"name": "url",
 			"value": "{{url}}",
 			"type": "text"
 		},
 		{
-			"name": "title",
-			"value": "{{schema:@VideoObject:name}}",
-			"type": "text"
-		},
-		{
-			"name": "channel",
-			"value": "{{schema:@VideoObject:author}}",
+			"name": "image",
+			"value": "{{schema:thumbnailUrl|slice:0}}",
 			"type": "text"
 		},
 		{
@@ -25,24 +35,19 @@
 			"type": "date"
 		},
 		{
-			"name": "published",
-			"value": "{{schema:@VideoObject:uploadDate|date:\\\"YYYY-MM-DD\\\"}}",
-			"type": "date"
+			"name": "tags",
+			"value": "youtube video",
+			"type": "multitext"
 		},
 		{
 			"name": "duration",
 			"value": "{{schema:@VideoObject:duration|replace:\\\"PT\\\",\\\"\\\",\\\"S\\\",\\\"\\\"}}",
 			"type": "text"
-		},
-		{
-			"name": "tags",
-			"value": "youtube video",
-			"type": "multitext"
 		}
 	],
 	"triggers": [
-		"https://www.youtube.com/watch"
+		"https://www.youtube.com/watch?v="
 	],
-	"noteNameFormat": "{{schema:@VideoObject:name|safe_name|replace:\"\\#\":\"\",\"\\!\":\"\"|trim}} - {{schema:@VideoObject:author}}",
+	"noteNameFormat": "{{schema:author}} – {{schema:name}}",
 	"path": "0_Inbox"
 }
