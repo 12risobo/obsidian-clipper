@@ -43,12 +43,19 @@
 			"name": "description",
 			"value": "{{description}}",
 			"type": "text"
+		},
+		{
+			"name": "image",
+			"value": "{{image}}",
+			"type": "text"
+		},
+		{
+			"name": "words",
+			"value": "{{words}}",
+			"type": "number"
 		}
 	],
-	"triggers": [
-		"www.reddit.com",
-		"old.reddit.com"
-	],
-	"noteNameFormat": " {{selector:shreddit-post?post-title|trim|safe_name}} - Reddit",
+	"triggers": [],
+	"noteNameFormat": " {{title}}",
 	"path": "0_Inbox"
 }
