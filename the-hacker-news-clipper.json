@@ -21,8 +21,13 @@
 		},
 		{
 			"name": "tags",
-			"value": "clippings, To read",
+			"value": "clippings",
 			"type": "multitext"
+		},
+		{
+			"name": "status",
+			"value": "To read",
+			"type": "text"
 		},
 		{
 			"name": "source",

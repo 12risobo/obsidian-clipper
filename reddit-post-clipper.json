@@ -21,8 +21,13 @@
 		},
 		{
 			"name": "tags",
-			"value": "clippings, To read",
+			"value": "clippings",
 			"type": "multitext"
+		},
+		{
+			"name": "status",
+			"value": "To Read",
+			"type": "text"
 		},
 		{
 			"name": "source",
@@ -48,6 +53,11 @@
 			"name": "author",
 			"value": "{{author}}",
 			"type": "multitext"
+		},
+		{
+			"name": "image",
+			"value": "{{image}}",
+			"type": "text"
 		}
 	],
 	"triggers": [
