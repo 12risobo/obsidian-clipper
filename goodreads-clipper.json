@@ -1,0 +1,88 @@
+{
+	"schemaVersion": "0.1.0",
+	"name": "Goodreads",
+	"behavior": "create",
+	"noteContentFormat": "\n![cover|150]({{selector:.BookCover__image img?src|first}})",
+	"properties": [
+		{
+			"name": "created",
+			"value": "{{date}}",
+			"type": "date"
+		},
+		{
+			"name": "categories",
+			"value": "[[Books]]",
+			"type": "multitext"
+		},
+		{
+			"name": "author",
+			"value": "{{selector:.ContributorLink__name|unique|wikilink|join}}",
+			"type": "multitext"
+		},
+		{
+			"name": "title",
+			"value": "{{selector:.BookPageTitleSection__title h1}}",
+			"type": "text"
+		},
+		{
+			"name": "pages",
+			"value": "{{selector:p[data-testid='pagesFormat'|split:\\\", \\\"|slice:0|split:\\\" \\\"|slice:0}}",
+			"type": "number"
+		},
+		{
+			"name": "Date_started",
+			"value": "",
+			"type": "date"
+		},
+		{
+			"name": "Date_finished",
+			"value": "",
+			"type": "text"
+		},
+		{
+			"name": "status",
+			"value": "To read",
+			"type": "text"
+		},
+		{
+			"name": "tags",
+			"value": "Books,  aantekeningen",
+			"type": "multitext"
+		},
+		{
+			"name": "isbn",
+			"value": "{{selector:.DescList|split:\\\"ISBN\\\"|slice:1,2|split:\\\" \\\"|first}}",
+			"type": "text"
+		},
+		{
+			"name": "cover",
+			"value": "{{selector:.BookCover__image img?src|first}}",
+			"type": "text"
+		},
+		{
+			"name": "localCover",
+			"value": "{{localCoverImage}}",
+			"type": "text"
+		},
+		{
+			"name": "recommended_by",
+			"value": "",
+			"type": "multitext"
+		},
+		{
+			"name": "Related notes",
+			"value": "",
+			"type": "multitext"
+		},
+		{
+			"name": "aliases",
+			"value": "",
+			"type": "multitext"
+		}
+	],
+	"triggers": [
+		"https://www.goodreads.com/book/"
+	],
+	"noteNameFormat": "{{selector:.BookPageTitleSection__title h1}} - {{selector:.ContributorLink__name|unique|wikilink|join}}",
+	"path": "3_Resources/Books/Books gegevens"
+}

@@ -1,0 +1,88 @@
+{
+	"schemaVersion": "0.1.0",
+	"name": "IMDB",
+	"behavior": "create",
+	"noteContentFormat": "\n![cover|150]({{schema:image}})",
+	"properties": [
+		{
+			"name": "created",
+			"value": "{{date}}",
+			"type": "date"
+		},
+		{
+			"name": "categories",
+			"value": "[[Movies]]",
+			"type": "multitext"
+		},
+		{
+			"name": "title",
+			"value": "{{schema:name}}",
+			"type": "text"
+		},
+		{
+			"name": "director",
+			"value": "{{selector:[data-testid=\\\"title-pc-principal-credit\\\"]:first-child a|unique|wikilink|join}}",
+			"type": "multitext"
+		},
+		{
+			"name": "rating",
+			"value": "{{selector:[data-testid=\\\"hero-rating-bar__user-rating__score\\\"] span|unique}}",
+			"type": "number"
+		},
+		{
+			"name": "cast",
+			"value": "{{selector:[data-testid=\\\"title-pc-principal-credit\\\"]:nth-child(3) div a|unique|wikilink|join}}",
+			"type": "multitext"
+		},
+		{
+			"name": "Date_watched",
+			"value": "",
+			"type": "date"
+		},
+		{
+			"name": "Status",
+			"value": "To watch",
+			"type": "text"
+		},
+		{
+			"name": "tags",
+			"value": "Movies, clippings",
+			"type": "multitext"
+		},
+		{
+			"name": "cover",
+			"value": "{{schema:image}}",
+			"type": "text"
+		},
+		{
+			"name": "year",
+			"value": "{{schema:datePublished|split:\\\"-\\\"|slice:0,1}}",
+			"type": "number"
+		},
+		{
+			"name": "recommended_by",
+			"value": "",
+			"type": "multitext"
+		},
+		{
+			"name": "Related notes",
+			"value": "",
+			"type": "multitext"
+		},
+		{
+			"name": "nerd_boys",
+			"value": "",
+			"type": "checkbox"
+		},
+		{
+			"name": "nerd_boys_watched",
+			"value": "",
+			"type": "date"
+		}
+	],
+	"triggers": [
+		"/^https:\\/\\/www\\.imdb\\.com\\/title\\/tt\\d+(?!\\/reference\\/)(\\/[^\\s]*)?$/"
+	],
+	"noteNameFormat": "{{schema:name}}",
+	"path": "3_Resources/Films"
+}

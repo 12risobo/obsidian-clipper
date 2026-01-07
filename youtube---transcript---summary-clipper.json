@@ -2,7 +2,7 @@
 	"schemaVersion": "0.1.0",
 	"name": "YouTube - transcript - summary",
 	"behavior": "create",
-	"noteContentFormat": "![{{schema:name}}]({{url}})\n\n\n## Notes\n\n## Summary\n{{\"Can you make a summary of this video based on the transcript? Please make it visual and make it in Markdown? \"}}\n\n## todo\n\n## Description\n\n{{schema:@VideoObject:description}}\n\n## Transcript\n\n{{selectorHtml:.ytd-transcript-segment-list-renderer|first|replace:\"&nbsp;\":\" \"|join|markdown}}",
+	"noteContentFormat": "![{{schema:name}}]({{url}})\n\n## Highlights \n{{highlights|map:item => item.text (item.timestamp)|join:\"\\n\\n\"}}\n\n## Summary\n{{\"Can you make a summary of this video based on the transcript? Please make it visual and make it in Markdown? It will be read in Obsidian. Please provide clickable links that link to timestamps of the video where the most important parts of the summary play\"}}\n\n## todo\n\n## Description\n\n{{schema:@VideoObject:description}}\n\n## Transcript\n\n{{selectorHtml:.ytd-transcript-segment-list-renderer|first|replace:\"&nbsp;\":\" \"|join|markdown}}",
 	"properties": [
 		{
 			"name": "title",
@@ -36,7 +36,7 @@
 		},
 		{
 			"name": "tags",
-			"value": "youtube video",
+			"value": "youtube, video",
 			"type": "multitext"
 		},
 		{

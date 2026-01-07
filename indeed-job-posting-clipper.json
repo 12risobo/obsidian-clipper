@@ -1,0 +1,65 @@
+{
+	"schemaVersion": "0.1.0",
+	"name": "Indeed Job Posting",
+	"behavior": "create",
+	"noteContentFormat": "# {{schema:title|selector:h1}}\n\n## Highlights \n{{highlights|map:item => item.text (item.timestamp)|join:\"\\n\\n\"}}\n\n**Company:** {{schema:hiringOrganization.name|selector:.jobsearch-CompanyInfoWithoutDrawerGroup :is(a,div)|first}}\n\n**Location:** {{schema:jobLocation.address.addressLocality|selector:.jobsearch-CompanyInfoWithoutDrawerGroup div:last-child}}\n\n**Employment type:** {{schema:employmentType|selector:.jobsearch-JobInfoHeader-subtitle :is(div,span)|first}}\n\n**Posted:** {{schema:datePosted|date:\"YYYY-MM-DD\"}}\n\n---\n\n## Description\n\n{{selectorHtml:#jobDescriptionText|markdown}}\n\n---\n\n[Apply on Indeed]({{url}})\n\n{{highlights|callout:(\"highlight\",\"Highlights\",false)}}",
+	"properties": [
+		{
+			"name": "created",
+			"value": "{{date}}",
+			"type": "date"
+		},
+		{
+			"name": "title",
+			"value": "{{schema:title|selector:h1}}",
+			"type": "text"
+		},
+		{
+			"name": "company",
+			"value": "{{schema:hiringOrganization.name|selector:.jobsearch-CompanyInfoWithoutDrawerGroup :is(a,div)|first}}",
+			"type": "text"
+		},
+		{
+			"name": "location",
+			"value": "{{schema:jobLocation.address.addressLocality|selector:.jobsearch-CompanyInfoWithoutDrawerGroup div:last-child}}",
+			"type": "text"
+		},
+		{
+			"name": "employment-type",
+			"value": "{{schema:employmentType|selector:.jobsearch-JobInfoHeader-subtitle :is(div,span)|first}}",
+			"type": "text"
+		},
+		{
+			"name": "salary-min",
+			"value": "{{schema:baseSalary.value.minValue}}",
+			"type": "number"
+		},
+		{
+			"name": "salary-max",
+			"value": "{{schema:baseSalary.value.maxValue}}",
+			"type": "number"
+		},
+		{
+			"name": "date-posted",
+			"value": "{{schema:datePosted}}",
+			"type": "datetime"
+		},
+		{
+			"name": "url",
+			"value": "{{url}}",
+			"type": "text"
+		},
+		{
+			"name": "tags",
+			"value": "vacature",
+			"type": "multitext"
+		}
+	],
+	"triggers": [
+		"https://www.indeed.com/viewjob",
+		"https://indeed.com/viewjob",
+		"/^https:\\/\\/[^/]*indeed\\.(com|co\\.uk|ca|fr|de|nl)\\/viewjob\\?jk=.*/"
+	],
+	"noteNameFormat": "{{schema:title|selector:h1|safe_name}} — {{schema:hiringOrganization.name|selector:.jobsearch-CompanyInfoWithoutDrawerGroup :is(a,div)|first|safe_name}} ({{date|date:\"YYYY-MM-DD\"}})",
+	"path": "2_Areas/Loopbaan/Vacatures"
+}

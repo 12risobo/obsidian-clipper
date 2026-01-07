@@ -1,6 +1,6 @@
 {
 	"schemaVersion": "0.1.0",
-	"name": "The Hacker News",
+	"name": "Article",
 	"behavior": "create",
 	"noteContentFormat": "{{content}}",
 	"properties": [
@@ -15,8 +15,8 @@
 			"type": "multitext"
 		},
 		{
-			"name": "Type",
-			"value": "Ycombinator",
+			"name": "source",
+			"value": "{{url}}",
 			"type": "text"
 		},
 		{
@@ -25,24 +25,19 @@
 			"type": "multitext"
 		},
 		{
-			"name": "source",
-			"value": "{{url}}",
-			"type": "text"
-		},
-		{
 			"name": "title",
 			"value": "{{title}}",
 			"type": "text"
 		},
 		{
-			"name": "author",
-			"value": "{{author}}",
-			"type": "multitext"
-		},
-		{
 			"name": "published",
 			"value": "{{published}}",
 			"type": "date"
+		},
+		{
+			"name": "author",
+			"value": "{{author|wikilink}}",
+			"type": "multitext"
 		},
 		{
 			"name": "description",
@@ -51,9 +46,9 @@
 		}
 	],
 	"triggers": [
-		"https://thehackernews.com/",
-		"https://news.ycombinator.com/"
+		"www.reddit.com",
+		"old.reddit.com"
 	],
-	"noteNameFormat": "{{selectorHtml:.post-body > meta[itemprop=\"datePublished\"]?content|date:\"YYYY-MM-DD\"}} {{title|safe_name}} - Ycombinator",
+	"noteNameFormat": " {{selector:shreddit-post?post-title|trim|safe_name}} - Reddit",
 	"path": "0_Inbox"
 }

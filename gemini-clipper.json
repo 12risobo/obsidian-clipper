@@ -1,0 +1,48 @@
+{
+	"schemaVersion": "0.1.0",
+	"name": "Gemini",
+	"behavior": "create",
+	"noteContentFormat": "## Summary\n{{\"Make a one page summary of this conversation in markdown, it will be read in Obsidian so optimize for that.\"}}\n\n## Converstation\n> [!info] model: {{selector: bard-mode-switcher | markdown}}\n{{selectorHtml:*:is(user-query, model-response) | join:\"\" | replace:(\"<bard-avatar \":\"★Gemini said<bard-avatar \" , \"<user-query \":\"★You said<user-query \") | markdown | blockquote | replace:(\"> \\n> ★Gemini said\":\"\\n> [!ai-response] Gemini said\" , \"> ★You said\":\"\\n> [!ai-prompt] You said\") }}\n",
+	"properties": [
+		{
+			"name": "created",
+			"value": "{{date}}",
+			"type": "date"
+		},
+		{
+			"name": "Categories",
+			"value": "[[AI-Chat]]",
+			"type": "multitext"
+		},
+		{
+			"name": "source",
+			"value": "{{url}}",
+			"type": "text"
+		},
+		{
+			"name": "tags",
+			"value": "clippings",
+			"type": "multitext"
+		},
+		{
+			"name": "topic",
+			"value": "{{\\\"topics in this article, separated by commas\\\"}}",
+			"type": "multitext"
+		},
+		{
+			"name": "aliases",
+			"value": "",
+			"type": "multitext"
+		},
+		{
+			"name": "Related notes",
+			"value": "",
+			"type": "multitext"
+		}
+	],
+	"triggers": [
+		"https://gemini.google.com/app"
+	],
+	"noteNameFormat": "{{selector:conversation-actions .conversation-title|safe_name}} - {{site|safe_name}}",
+	"path": "0_Inbox"
+}
